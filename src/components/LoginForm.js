@@ -11,21 +11,21 @@ class LoginForm extends React.Component {
   }
   updateUsername = (e) => {
     this.setState({
-      username: e.target.value
+      [e.target.name]: e.target.value
     })
-    console.log(e.target.value)
+    console.log(this.state)
   }
-
-  updatePassword = (e) => {
-    this.setState({
-      password: e.target.value
-    })
-    console.log(e.target.value)
+  
+  submitForm = (e) => {
+    e.preventDefault()
+    const username = this.state.username
+    const password = this.state.password 
+    // let dataArray = this.state.submittedData.concat(formData)
+    this.props.handleLogin({username, password})
   }
-
   render() {
     return (
-      <form onSubmit = {this.props.handleLogin} >
+      <form onSubmit = {this.submitForm} >
         <div>
           <label>
             Username
@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
               id="password" 
               name="password" 
               type="password"
-              onChange={event => this.updatePassword(event)} 
+              onChange={event => this.updateUsername(event)} 
               value={this.state.password} />
           </label>
         </div>

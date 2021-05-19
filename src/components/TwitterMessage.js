@@ -9,14 +9,12 @@ class TwitterMessage extends React.Component {
       maxChar: props.maxChars
     };
   }
-
   countChar = (e) => {
     this.setState({
       character: e.target.value.length
     })
     console.log(e.target.value.length)  
   }
-  
   
   render() {
     return (
